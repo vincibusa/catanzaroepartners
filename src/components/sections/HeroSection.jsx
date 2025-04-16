@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative bg-gray-900 text-white h-screen flex items-center">
       {/* Overlay con gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-red-900/90 to-purple-900/90 z-10"></div>
       
       {/* Background Image */}
       <div 
@@ -46,7 +46,7 @@ const HeroSection = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium text-lg transition-colors duration-300"
+              className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium text-lg transition-colors duration-300"
               onClick={() => {
                 const servicesSection = document.getElementById('servizi');
                 if (servicesSection) {

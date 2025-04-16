@@ -6,7 +6,7 @@ const ServicesSection = () => {
       title: 'Strategia Digitale',
       description: 'Sviluppiamo strategie di marketing digitale personalizzate per raggiungere gli obiettivi di business dei nostri clienti.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
@@ -15,7 +15,7 @@ const ServicesSection = () => {
       title: 'Branding & Identità',
       description: 'Creiamo identità di marca distintive che comunicano i valori e la missione dell\'azienda in modo efficace.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
         </svg>
       ),
@@ -24,7 +24,7 @@ const ServicesSection = () => {
       title: 'Social Media Marketing',
       description: 'Gestiamo la presenza sui social media, creando contenuti coinvolgenti e campagne che generano interazione e conversioni.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
         </svg>
       ),
@@ -33,7 +33,7 @@ const ServicesSection = () => {
       title: 'Sviluppo Web',
       description: 'Progettiamo e sviluppiamo siti web e applicazioni responsive, con un\'attenzione particolare all\'esperienza utente.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       ),
@@ -42,7 +42,7 @@ const ServicesSection = () => {
       title: 'SEO & SEM',
       description: 'Ottimizziamo la visibilità online attraverso strategie di SEO e campagne pubblicitarie mirate su motori di ricerca.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
@@ -51,7 +51,7 @@ const ServicesSection = () => {
       title: 'Content Marketing',
       description: 'Creiamo contenuti di valore che attirano e fidelizzano il pubblico, posizionando il brand come autorità nel settore.',
       icon: (
-        <svg className="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-16 h-16 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
         </svg>
       ),
@@ -97,7 +97,7 @@ const ServicesSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-blue-600 mx-auto mb-6"
+            className="w-20 h-1 bg-red-600 mx-auto mb-6"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -129,7 +129,7 @@ const ServicesSection = () => {
               <motion.a
                 href="#"
                 whileHover={{ x: 5 }}
-                className="inline-flex items-center mt-4 text-blue-600 font-medium"
+                className="inline-flex items-center mt-4 text-red-600 font-medium"
               >
                 Scopri di più
                 <svg
@@ -154,7 +154,7 @@ const ServicesSection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
+            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
           >
             Parliamo del tuo progetto
           </motion.button>

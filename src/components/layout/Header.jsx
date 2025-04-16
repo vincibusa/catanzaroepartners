@@ -76,7 +76,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed w-full bg-white z-50 shadow-sm">
+    <header className="fixed w-full bg-white z-50 shadow-sm ">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center">
@@ -86,7 +86,7 @@ const Header = () => {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-gray-800"
           >
-            Catanzaro & Partners
+            Catanzaro
           </motion.div>
         </Link>
 
@@ -96,7 +96,7 @@ const Header = () => {
             <button
               key={item.name}
               onClick={() => scrollToSection(item.id)}
-              className="text-gray-600 hover:text-blue-600 transition-colors duration-300 cursor-pointer"
+              className="text-gray-600 hover:text-red-600 transition-colors duration-300 cursor-pointer"
             >
               {item.name}
             </button>
@@ -105,7 +105,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection('contatti')}
-            className="bg-blue-600 text-white py-2 px-6 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300"
+            className="bg-red-600 text-white py-2 px-6 rounded-full font-medium hover:bg-red-700 transition-colors duration-300"
           >
             Contattaci
           </motion.button>
@@ -149,7 +149,7 @@ const Header = () => {
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-300 py-2 text-left"
+                className="flex items-center text-gray-600 hover:text-red-600 transition-colors duration-300 py-2 text-left"
               >
                 {item.icon}
                 {item.name}
@@ -159,7 +159,7 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('contatti')}
-              className="bg-blue-600 text-white py-2 px-6 rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 self-start flex items-center mt-2"
+              className="bg-red-600 text-white py-2 px-6 rounded-full font-medium hover:bg-red-700 transition-colors duration-300 self-start flex items-center mt-2"
             >
               <svg 
                 className="w-5 h-5 mr-2" 

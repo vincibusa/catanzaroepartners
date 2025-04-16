@@ -78,7 +78,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-blue-600 mx-auto mb-6"
+            className="w-20 h-1 bg-red-600 mx-auto mb-6"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -104,7 +104,7 @@ const ContactSection = () => {
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="flex-shrink-0 mt-1">
-                  <div className="bg-blue-600 rounded-full p-2">
+                  <div className="bg-red-600 rounded-full p-2">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -119,7 +119,7 @@ const ContactSection = () => {
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 mt-1">
-                  <div className="bg-blue-600 rounded-full p-2">
+                  <div className="bg-red-600 rounded-full p-2">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
@@ -133,7 +133,7 @@ const ContactSection = () => {
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 mt-1">
-                  <div className="bg-blue-600 rounded-full p-2">
+                  <div className="bg-red-600 rounded-full p-2">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
@@ -147,7 +147,7 @@ const ContactSection = () => {
               
               <div className="flex items-start">
                 <div className="flex-shrink-0 mt-1">
-                  <div className="bg-blue-600 rounded-full p-2">
+                  <div className="bg-red-600 rounded-full p-2">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -171,7 +171,7 @@ const ContactSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ y: -5 }}
-                    className="bg-white p-3 rounded-full shadow-md text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                    className="bg-white p-3 rounded-full shadow-md text-gray-600 hover:text-red-600 transition-colors duration-300"
                   >
                     <span className="sr-only">{social}</span>
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -209,7 +209,7 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                       placeholder="Il tuo nome"
                     />
                   </div>
@@ -225,7 +225,7 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                       placeholder="La tua email"
                     />
                   </div>
@@ -242,7 +242,7 @@ const ContactSection = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                       placeholder="Il tuo numero di telefono"
                     />
                   </div>
@@ -257,7 +257,7 @@ const ContactSection = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent"
                       placeholder="La tua azienda"
                     />
                   </div>
@@ -277,7 +277,7 @@ const ContactSection = () => {
                           value={service}
                           checked={formData.services.includes(service)}
                           onChange={handleCheckboxChange}
-                          className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
                         />
                         <label htmlFor={service} className="ml-2 text-gray-700">
                           {service}
@@ -298,7 +298,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent resize-none"
                     placeholder="Descrivi il tuo progetto o la tua richiesta..."
                   ></textarea>
                 </div>
@@ -310,11 +310,11 @@ const ContactSection = () => {
                       name="privacy"
                       type="checkbox"
                       required
-                      className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
                     />
                     <label htmlFor="privacy" className="ml-2 text-gray-700 text-sm">
                       Acconsento al trattamento dei dati personali secondo la{' '}
-                      <a href="/privacy-policy" className="text-blue-600 hover:underline">
+                      <a href="/privacy-policy" className="text-red-600 hover:underline">
                         Privacy Policy
                       </a>
                       . *
@@ -326,7 +326,7 @@ const ContactSection = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-300"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-300"
                 >
                   Invia messaggio
                 </motion.button>

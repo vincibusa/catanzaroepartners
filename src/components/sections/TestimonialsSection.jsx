@@ -62,14 +62,17 @@ const TestimonialsSection = () => {
   const slideVariants = {
     enter: (direction) => ({
       x: direction > 0 ? 1000 : -1000,
+      y: 0,
       opacity: 0,
     }),
     center: {
       x: 0,
+      y: 0,
       opacity: 1,
     },
     exit: (direction) => ({
       x: direction < 0 ? 1000 : -1000,
+      y: 0,
       opacity: 0,
     }),
   };
@@ -92,7 +95,7 @@ const TestimonialsSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-blue-600 mx-auto mb-6"
+            className="w-20 h-1 bg-red-600 mx-auto mb-6"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -112,7 +115,7 @@ const TestimonialsSection = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={prevTestimonial}
-              className="bg-white rounded-full p-3 shadow-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="bg-white rounded-full p-3 shadow-md text-gray-700 hover:text-red-600 focus:outline-none"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
@@ -125,7 +128,7 @@ const TestimonialsSection = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={nextTestimonial}
-              className="bg-white rounded-full p-3 shadow-md text-gray-700 hover:text-blue-600 focus:outline-none"
+              className="bg-white rounded-full p-3 shadow-md text-gray-700 hover:text-red-600 focus:outline-none"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -134,8 +137,8 @@ const TestimonialsSection = () => {
           </div>
 
           {/* Testimonial Carousel */}
-          <div className="bg-gray-50 rounded-xl shadow-lg overflow-hidden">
-            <AnimatePresence initial={false} custom={direction}>
+          <div className="bg-gray-50 rounded-xl shadow-lg overflow-hidden relative" style={{ minHeight: '250px' }}>
+            <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
                 custom={direction}
@@ -143,8 +146,12 @@ const TestimonialsSection = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ type: 'tween', duration: 0.5 }}
-                className="p-8 md:p-12"
+                transition={{ 
+                  type: 'tween', 
+                  duration: 0.5,
+                  ease: 'easeInOut'
+                }}
+                className="p-8 md:p-12 absolute top-0 left-0 w-full"
               >
                 <div className="flex flex-col md:flex-row items-center">
                   <div className="mb-6 md:mb-0 md:mr-8">
@@ -197,7 +204,7 @@ const TestimonialsSection = () => {
                   setCurrentIndex(index);
                 }}
                 className={`w-3 h-3 mx-1 rounded-full ${
-                  index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+                  index === currentIndex ? 'bg-red-600' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

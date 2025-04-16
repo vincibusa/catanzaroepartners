@@ -115,7 +115,7 @@ const PortfolioSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-blue-600 mx-auto mb-6"
+            className="w-20 h-1 bg-red-600 mx-auto mb-6"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -138,7 +138,7 @@ const PortfolioSection = () => {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
                 activeFilter === filter.id
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-red-600 text-white'
                   : 'bg-white text-gray-700 hover:bg-gray-100'
               }`}
             >
@@ -171,7 +171,7 @@ const PortfolioSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                 <h3 className="text-white text-lg font-bold mb-1">{project.title}</h3>
                 <p className="text-gray-300 text-sm mb-2">{project.description}</p>
-                <span className="inline-block px-3 py-1 bg-blue-600 text-white text-xs rounded-full uppercase">
+                <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs rounded-full uppercase">
                   {filters.find(f => f.id === project.category).label}
                 </span>
               </div>
@@ -183,7 +183,7 @@ const PortfolioSection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
+            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
           >
             Vedi tutti i progetti
           </motion.button>

@@ -5,13 +5,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-8">
+    <footer className="bg-red-950 text-white pt-12 pb-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Colonna 1 - Informazioni sull'agenzia */}
           <div>
             <h3 className="text-xl font-bold mb-4">Catanzaro & Partners</h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-300 mb-4">
               Agenzia di marketing innovativa specializzata in strategie digitali 
               per aiutare le aziende a crescere nel mercato competitivo di oggi.
             </p>
@@ -24,7 +24,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ y: -5 }}
-                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
                 >
                   <span className="sr-only">{social}</span>
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@ const Footer = () => {
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-300 hover:text-red-400 transition-colors duration-300"
                   >
                     {item}
                   </Link>
@@ -58,6 +58,7 @@ const Footer = () => {
           {/* Colonna 3 - Servizi */}
           <div>
             <h3 className="text-xl font-bold mb-4">I Nostri Servizi</h3>
+            <div className="w-12 h-1 bg-red-500 mb-4"></div>
             <ul className="space-y-2">
               {[
                 'Strategia Digitale',
@@ -70,7 +71,7 @@ const Footer = () => {
                 <li key={service}>
                   <Link
                     to="/servizi"
-                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                    className="text-gray-300 hover:text-red-400 transition-colors duration-300"
                   >
                     {service}
                   </Link>
@@ -82,10 +83,11 @@ const Footer = () => {
           {/* Colonna 4 - Contatti */}
           <div>
             <h3 className="text-xl font-bold mb-4">Contattaci</h3>
+            <div className="w-12 h-1 bg-red-500 mb-4"></div>
             <ul className="space-y-2">
               <li className="flex items-start">
                 <svg
-                  className="h-6 w-6 text-gray-400 mr-2 mt-1"
+                  className="h-6 w-6 text-red-500 mr-2 mt-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -103,13 +105,13 @@ const Footer = () => {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-gray-400">
+                <span className="text-gray-300">
                   Via Roma 123, 00100 Roma, Italia
                 </span>
               </li>
               <li className="flex items-start">
                 <svg
-                  className="h-6 w-6 text-gray-400 mr-2 mt-1"
+                  className="h-6 w-6 text-red-500 mr-2 mt-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -121,11 +123,11 @@ const Footer = () => {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-400">info@catanzaroepartners.it</span>
+                <span className="text-gray-300">info@catanzaroepartners.it</span>
               </li>
               <li className="flex items-start">
                 <svg
-                  className="h-6 w-6 text-gray-400 mr-2 mt-1"
+                  className="h-6 w-6 text-red-500 mr-2 mt-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -137,25 +139,25 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="text-gray-400">+39 06 1234567</span>
+                <span className="text-gray-300">+39 06 1234567</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-10 pt-6">
+        <div className="border-t border-red-900 mt-10 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-300 text-sm">
               © {currentYear} Catanzaro & Partners. Tutti i diritti riservati.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link to="/privacy-policy" className="text-gray-400 hover:text-white text-sm">
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-red-400 text-sm">
                 Privacy Policy
               </Link>
-              <Link to="/termini-condizioni" className="text-gray-400 hover:text-white text-sm">
+              <Link to="/termini-condizioni" className="text-gray-300 hover:text-red-400 text-sm">
                 Termini e Condizioni
               </Link>
-              <Link to="/cookie-policy" className="text-gray-400 hover:text-white text-sm">
+              <Link to="/cookie-policy" className="text-gray-300 hover:text-red-400 text-sm">
                 Cookie Policy
               </Link>
             </div>
