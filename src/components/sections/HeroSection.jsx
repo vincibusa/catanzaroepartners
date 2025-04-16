@@ -1,20 +1,26 @@
 import { motion } from 'framer-motion';
+import backgroundVideo from '../../assets/cannoloVideo.mp4';
 
 const HeroSection = () => {
   return (
     <section id="hero" className="relative bg-gray-900 text-white h-screen flex items-center">
       {/* Overlay con gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-r from-red-900/90 to-purple-900/90 z-10"></div>
+      <div className="absolute inset-0 z-10"></div>
       
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-          backgroundPosition: 'center',
-          filter: 'brightness(0.6)'
-        }}
-      />
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ filter: 'brightness(0.6)' }}
+        >
+          <source src={backgroundVideo} type="video/mp4" />
+          Il tuo browser non supporta il tag video.
+        </video>
+      </div>
       
       {/* Content */}
       <div className="container mx-auto px-4 z-20">

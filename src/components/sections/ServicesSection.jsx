@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const ServicesSection = () => {
   const services = [
     {
+      id: 'strategia-digitale',
       title: 'Strategia Digitale',
       description: 'Sviluppiamo strategie di marketing digitale personalizzate per raggiungere gli obiettivi di business dei nostri clienti.',
       icon: (
@@ -10,8 +12,10 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
         </svg>
       ),
+      longDescription: 'La nostra strategia digitale è un approccio completo che analizza il mercato, la concorrenza e il pubblico target per creare un piano d\'azione personalizzato. Utilizziamo strumenti avanzati di analisi per identificare opportunità e ottimizzare le performance, garantendo un ROI misurabile e costante crescita nel tempo.'
     },
     {
+      id: 'branding-identita',
       title: 'Branding & Identità',
       description: 'Creiamo identità di marca distintive che comunicano i valori e la missione dell\'azienda in modo efficace.',
       icon: (
@@ -19,8 +23,10 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
         </svg>
       ),
+      longDescription: 'Il nostro servizio di Branding & Identità va oltre la semplice creazione di un logo. Definiamo un\'identità completa che rispecchia l\'essenza del tuo business, i suoi valori e obiettivi. Sviluppiamo una brand identity coerente attraverso tutti i touchpoint, dal logo ai colori, dalla tipografia al tone of voice, creando un\'esperienza memorabile per i tuoi clienti.'
     },
     {
+      id: 'social-media-marketing',
       title: 'Social Media Marketing',
       description: 'Gestiamo la presenza sui social media, creando contenuti coinvolgenti e campagne che generano interazione e conversioni.',
       icon: (
@@ -28,8 +34,10 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
         </svg>
       ),
+      longDescription: 'Il nostro servizio di Social Media Marketing è progettato per costruire una presenza significativa sui social network rilevanti per il tuo pubblico. Creiamo strategie personalizzate, produciamo contenuti di qualità e sviluppiamo campagne pubblicitarie mirate. Monitoriamo costantemente le performance, ottimizzando le attività per massimizzare engagement, crescita della community e conversioni.'
     },
     {
+      id: 'sviluppo-web',
       title: 'Sviluppo Web',
       description: 'Progettiamo e sviluppiamo siti web e applicazioni responsive, con un\'attenzione particolare all\'esperienza utente.',
       icon: (
@@ -37,8 +45,10 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
         </svg>
       ),
+      longDescription: 'Il nostro servizio di Sviluppo Web offre soluzioni digitali all\'avanguardia, pensate per soddisfare le esigenze specifiche del tuo business. Realizziamo siti web responsive, e-commerce e applicazioni web con un\'attenzione particolare al design, all\'usabilità e alle performance. Utilizziamo le tecnologie più moderne per garantire sicurezza, velocità e scalabilità dei tuoi progetti digitali.'
     },
     {
+      id: 'seo-sem',
       title: 'SEO & SEM',
       description: 'Ottimizziamo la visibilità online attraverso strategie di SEO e campagne pubblicitarie mirate su motori di ricerca.',
       icon: (
@@ -46,8 +56,10 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       ),
+      longDescription: 'I nostri servizi di SEO e SEM sono progettati per massimizzare la tua visibilità sui motori di ricerca. Per la SEO, realizziamo audit completi, ottimizziamo contenuti e struttura del sito, e implementiamo strategie di link building per migliorare il posizionamento organico. Per il SEM, creiamo e gestiamo campagne Google Ads altamente mirate, ottimizzando costantemente budget e performance.'
     },
     {
+      id: 'content-marketing',
       title: 'Content Marketing',
       description: 'Creiamo contenuti di valore che attirano e fidelizzano il pubblico, posizionando il brand come autorità nel settore.',
       icon: (
@@ -55,6 +67,7 @@ const ServicesSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
         </svg>
       ),
+      longDescription: 'Il nostro servizio di Content Marketing si focalizza sulla creazione e distribuzione di contenuti rilevanti e di valore per il tuo pubblico target. Sviluppiamo strategie editoriali complete, produciamo contenuti di alta qualità (blog, white paper, case study, video) e li distribuiamo attraverso i canali più efficaci. L\'obiettivo è attrarre, coinvolgere e convertire il pubblico, posizionando il tuo brand come punto di riferimento nel settore.'
     },
   ];
 
@@ -119,45 +132,48 @@ const ServicesSection = () => {
         >
           {services.map((service) => (
             <motion.div
-              key={service.title}
+              key={service.id}
               variants={itemVariants}
               className="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-shadow duration-300"
             >
               <div className="mb-4 flex justify-center md:justify-start">{service.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
               <p className="text-gray-600">{service.description}</p>
-              <motion.a
-                href="#"
-                whileHover={{ x: 5 }}
-                className="inline-flex items-center mt-4 text-red-600 font-medium"
-              >
-                Scopri di più
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <Link to={`/servizi/${service.id}`}>
+                <motion.div
+                  whileHover={{ x: 5 }}
+                  className="inline-flex items-center mt-4 text-red-600 font-medium cursor-pointer"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </motion.a>
+                  Scopri di più
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </motion.div>
+              </Link>
             </motion.div>
           ))}
         </motion.div>
 
         <div className="mt-16 text-center">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
-          >
-            Parliamo del tuo progetto
-          </motion.button>
+          <Link to="/contatti">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
+            >
+              Parliamo del tuo progetto
+            </motion.button>
+          </Link>
         </div>
       </div>
     </section>
