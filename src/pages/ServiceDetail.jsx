@@ -1,506 +1,355 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-// ScrollToTop component per gestire lo scroll automatico
+// Componente per lo scroll automatico all'inizio della pagina quando si cambia rotta
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { serviceId } = useParams();
   
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [serviceId]);
   
   return null;
 };
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
-  const [service, setService] = useState(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-  });
 
-  // Simula il caricamento del servizio da un database
-  useEffect(() => {
-    const services = [
-      {
-        id: 'strategia-digitale',
-        title: 'Strategia Digitale',
-        description: 'Sviluppiamo strategie di marketing digitale personalizzate per raggiungere gli obiettivi di business dei nostri clienti.',
-        longDescription: 'La nostra strategia digitale è un approccio completo che analizza il mercato, la concorrenza e il pubblico target per creare un piano d\'azione personalizzato. Utilizziamo strumenti avanzati di analisi per identificare opportunità e ottimizzare le performance, garantendo un ROI misurabile e costante crescita nel tempo.',
-        benefits: [
-          'Analisi approfondita del mercato e della concorrenza',
-          'Definizione di obiettivi misurabili e KPI',
-          'Pianificazione strategica multichannel',
-          'Ottimizzazione continua basata sui dati',
-          'Reportistica dettagliata e trasparente'
-        ],
-        icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z'
-      },
-      {
-        id: 'branding-identita',
-        title: 'Branding & Identità',
-        description: 'Creiamo identità di marca distintive che comunicano i valori e la missione dell\'azienda in modo efficace.',
-        longDescription: 'Il nostro servizio di Branding & Identità va oltre la semplice creazione di un logo. Definiamo un\'identità completa che rispecchia l\'essenza del tuo business, i suoi valori e obiettivi. Sviluppiamo una brand identity coerente attraverso tutti i touchpoint, dal logo ai colori, dalla tipografia al tone of voice, creando un\'esperienza memorabile per i tuoi clienti.',
-        benefits: [
-          'Analisi di posizionamento e differenziazione',
-          'Sviluppo di logo e visual identity',
-          'Definizione di palette colori e tipografia',
-          'Creazione di linee guida di brand',
-          'Design di materiali di comunicazione coerenti'
-        ],
-        icon: 'M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01'
-      },
-      {
-        id: 'social-media-marketing',
-        title: 'Social Media Marketing',
-        description: 'Gestiamo la presenza sui social media, creando contenuti coinvolgenti e campagne che generano interazione e conversioni.',
-        longDescription: 'Il nostro servizio di Social Media Marketing è progettato per costruire una presenza significativa sui social network rilevanti per il tuo pubblico. Creiamo strategie personalizzate, produciamo contenuti di qualità e sviluppiamo campagne pubblicitarie mirate. Monitoriamo costantemente le performance, ottimizzando le attività per massimizzare engagement, crescita della community e conversioni.',
-        benefits: [
-          'Analisi e creazione strategia social',
-          'Gestione completa dei profili aziendali',
-          'Produzione di contenuti originali e coinvolgenti',
-          'Pianificazione editoriale mensile',
-          'Gestione campagne pubblicitarie sui social media'
-        ],
-        icon: 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z'
-      },
-      {
-        id: 'sviluppo-web',
-        title: 'Sviluppo Web',
-        description: 'Progettiamo e sviluppiamo siti web e applicazioni responsive, con un\'attenzione particolare all\'esperienza utente.',
-        longDescription: 'Il nostro servizio di Sviluppo Web offre soluzioni digitali all\'avanguardia, pensate per soddisfare le esigenze specifiche del tuo business. Realizziamo siti web responsive, e-commerce e applicazioni web con un\'attenzione particolare al design, all\'usabilità e alle performance. Utilizziamo le tecnologie più moderne per garantire sicurezza, velocità e scalabilità dei tuoi progetti digitali.',
-        benefits: [
-          'Design UX/UI centrato sull\'utente',
-          'Sviluppo di siti web e applicazioni responsive',
-          'Piattaforme e-commerce performanti',
-          'Integrazione con CMS e sistemi gestionali',
-          'Ottimizzazione per velocità e performance'
-        ],
-        icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4'
-      },
-      {
-        id: 'seo-sem',
-        title: 'SEO & SEM',
-        description: 'Ottimizziamo la visibilità online attraverso strategie di SEO e campagne pubblicitarie mirate su motori di ricerca.',
-        longDescription: 'I nostri servizi di SEO e SEM sono progettati per massimizzare la tua visibilità sui motori di ricerca. Per la SEO, realizziamo audit completi, ottimizziamo contenuti e struttura del sito, e implementiamo strategie di link building per migliorare il posizionamento organico. Per il SEM, creiamo e gestiamo campagne Google Ads altamente mirate, ottimizzando costantemente budget e performance.',
-        benefits: [
-          'Audit SEO tecnico e analisi competitiva',
-          'Ottimizzazione on-page e off-page',
-          'Strategie di link building etico',
-          'Creazione e gestione campagne Google Ads',
-          'Ottimizzazione continua basata su dati'
-        ],
-        icon: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'
-      },
-      {
-        id: 'content-marketing',
-        title: 'Content Marketing',
-        description: 'Creiamo contenuti di valore che attirano e fidelizzano il pubblico, posizionando il brand come autorità nel settore.',
-        longDescription: 'Il nostro servizio di Content Marketing si focalizza sulla creazione e distribuzione di contenuti rilevanti e di valore per il tuo pubblico target. Sviluppiamo strategie editoriali complete, produciamo contenuti di alta qualità (blog, white paper, case study, video) e li distribuiamo attraverso i canali più efficaci. L\'obiettivo è attrarre, coinvolgere e convertire il pubblico, posizionando il tuo brand come punto di riferimento nel settore.',
-        benefits: [
-          'Sviluppo strategia editoriale',
-          'Creazione di contenuti di valore',
-          'Ottimizzazione SEO dei contenuti',
-          'Distribuzione multichannel',
-          'Analisi performance e ottimizzazione'
-        ],
-        icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z'
-      },
-    ];
-
-    const foundService = services.find(s => s.id === serviceId);
-    setService(foundService);
-  }, [serviceId]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  // Definizione dei servizi con le relative informazioni dettagliate
+  const servicesData = {
+    'branding': {
+      title: 'Branding',
+      subtitle: 'Diamo forma e identità al tuo marchio',
+      description: 'Il nostro servizio di Branding comprende Naming, Packaging, Registrazione marchi e Grafica Pubblicitaria. Creiamo identità di marca distintive che comunicano i valori della tua azienda in modo efficace e memorabile.',
+      image: 'https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      benefits: [
+        'Identità di marca riconoscibile e distintiva',
+        'Coerenza visiva su tutti i touchpoint',
+        'Differenziazione dalla concorrenza',
+        'Creazione di valore percepito',
+        'Costruzione di fiducia e fedeltà'
+      ],
+      subservices: [
+        {
+          name: 'Naming',
+          description: 'Sviluppiamo nomi distintivi e memorabili per la tua azienda, prodotti o servizi, valutando anche la disponibilità di domini web e verificando che non esistano conflitti con marchi registrati.'
+        },
+        {
+          name: 'Packaging',
+          description: 'Progettiamo confezioni che non solo proteggono il prodotto, ma comunicano efficacemente i valori del tuo brand e attirano l\'attenzione del cliente, creando un\'esperienza d\'acquisto memorabile.'
+        },
+        {
+          name: 'Registrazione marchi',
+          description: 'Ti supportiamo nel processo di registrazione del marchio a livello nazionale e internazionale, proteggendo la tua identità di marca e il tuo investimento.'
+        },
+        {
+          name: 'Grafica Pubblicitaria',
+          description: 'Creiamo materiali grafici di impatto per campagne pubblicitarie, materiali promozionali e comunicazione aziendale, mantenendo coerenza con l\'identità del brand.'
+        }
+      ]
+    },
+    'event': {
+      title: 'Event',
+      subtitle: 'Creiamo eventi che generano valore per i territori',
+      description: 'Progettiamo e organizziamo eventi enogastronomici e culturali che creano valore per i territori. Il nostro servizio comprende ideazione, organizzazione, gestione della segreteria e promozione dell\'evento attraverso canali tradizionali e digitali.',
+      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1769&q=80',
+      benefits: [
+        'Valorizzazione del patrimonio culturale ed enogastronomico',
+        'Creazione di esperienze memorabili',
+        'Visibilità per aziende e territori',
+        'Networking e creazione di nuove opportunità',
+        'Promozione turistica e sviluppo economico'
+      ],
+      subservices: [
+        {
+          name: 'Ideazione e organizzazione',
+          description: 'Concepiamo e realizziamo eventi originali e coinvolgenti, curando ogni dettaglio dalla pianificazione iniziale all\'esecuzione finale, garantendo un\'esperienza coerente con gli obiettivi prefissati.'
+        },
+        {
+          name: 'Segreteria',
+          description: 'Gestiamo tutti gli aspetti amministrativi e organizzativi dell\'evento, dalle iscrizioni al coordinamento di fornitori e partecipanti, garantendo un\'esperienza fluida per tutti gli stakeholder.'
+        },
+        {
+          name: 'Promozione',
+          description: 'Sviluppiamo e implementiamo strategie di comunicazione integrate per promuovere l\'evento attraverso canali online e offline, massimizzando la visibilità e incrementando la partecipazione.'
+        }
+      ]
+    },
+    'marketing': {
+      title: 'Marketing',
+      subtitle: 'Strategie di comunicazione integrate e d\'impatto',
+      description: 'I nostri servizi di Marketing comprendono gestione dei Social Media, attività di Ufficio Stampa e produzione di contenuti Video e Foto professionali. Sviluppiamo strategie di comunicazione integrate per massimizzare l\'impatto del tuo brand.',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
+      benefits: [
+        'Comunicazione efficace con il pubblico target',
+        'Costruzione e rafforzamento della brand awareness',
+        'Creazione di contenuti di valore',
+        'Gestione della reputazione del brand',
+        'Maggiore visibilità e raggiungimento di nuovi clienti'
+      ],
+      subservices: [
+        {
+          name: 'Social Media',
+          description: 'Gestiamo la presenza del tuo brand sui principali social network, creando e pubblicando contenuti coinvolgenti, gestendo la community e analizzando i risultati per ottimizzare costantemente le performance.'
+        },
+        {
+          name: 'Ufficio Stampa',
+          description: 'Curiamo le relazioni con i media, elaboriamo comunicati stampa efficaci e sviluppiamo strategie di PR per aumentare la visibilità del tuo brand su testate giornalistiche, blog e altri canali di informazione.'
+        },
+        {
+          name: 'Video',
+          description: 'Realizziamo contenuti video professionali per comunicare il tuo brand, dai video corporate ai tutorial, dalle interviste agli spot pubblicitari, curando ogni fase dalla sceneggiatura alla post-produzione.'
+        },
+        {
+          name: 'Foto',
+          description: 'Offriamo servizi fotografici professionali per valorizzare i tuoi prodotti, eventi, servizi e spazi, garantendo immagini di alta qualità da utilizzare su siti web, social media e materiali di marketing.'
+        }
+      ]
+    },
+    'web-multimedia': {
+      title: 'Web e Multimedia',
+      subtitle: 'Soluzioni digitali su misura per il tuo business',
+      description: 'I nostri servizi Web e Multimedia includono Web design, Hosting, Creazione di App ed E-Commerce. Realizziamo progetti digitali con un\'attenzione particolare al design, all\'esperienza utente e alle performance.',
+      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80',
+      benefits: [
+        'Presenza online efficace e professionale',
+        'Navigazione intuitiva e user experience ottimale',
+        'Soluzioni scalabili in base alle esigenze aziendali',
+        'Performance ottimizzate per conversioni e vendite',
+        'Compatibilità con tutti i dispositivi e browser'
+      ],
+      subservices: [
+        {
+          name: 'Web design',
+          description: 'Progettiamo e sviluppiamo siti web su misura, combinando estetica e funzionalità per creare un\'esperienza utente coinvolgente e intuitiva, ottimizzata per tutti i dispositivi e orientata agli obiettivi di business.'
+        },
+        {
+          name: 'Hosting',
+          description: 'Offriamo soluzioni di hosting affidabili e sicure per il tuo sito web, garantendo tempi di caricamento rapidi, protezione dai malware e backup regolari dei dati per assicurare la continuità del tuo business online.'
+        },
+        {
+          name: 'Creazione App',
+          description: 'Sviluppiamo applicazioni mobile e web personalizzate per iOS e Android, offrendo soluzioni intuitive e funzionali che rispondono alle specifiche esigenze della tua azienda e dei tuoi utenti.'
+        },
+        {
+          name: 'E-Commerce',
+          description: 'Realizziamo piattaforme di e-commerce complete e personalizzate, integrando sistemi di pagamento sicuri, gestione del catalogo prodotti e interfacce intuitive per offrire un\'esperienza d\'acquisto fluida e soddisfacente.'
+        }
+      ]
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // In un'implementazione reale, qui si invierebbe il form a un endpoint di backend
-    console.log('Form submitted:', formData);
-    alert(`Grazie per il tuo interesse nel nostro servizio di ${service?.title}! Ti contatteremo presto.`);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      message: '',
-    });
-  };
+  // Recupera i dati del servizio selezionato
+  const serviceData = servicesData[serviceId];
 
-  if (!service) {
+  if (!serviceData) {
     return (
-      <>
-        <ScrollToTop />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <svg className="w-24 h-24 text-red-600 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Servizio non trovato</h2>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto">Il servizio che stai cercando non è disponibile o potrebbe essere stato spostato.</p>
-              <Link to="/servizi">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300 shadow-md"
-                >
-                  Torna ai nostri servizi
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Servizio non trovato</h2>
+          <p className="text-gray-600 mb-6">Il servizio che stai cercando non esiste o è stato rimosso.</p>
+          <Link to="/servizi">
+            <button className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full">
+              Torna ai servizi
+            </button>
+          </Link>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
     <>
       <ScrollToTop />
-      <div className="pt-20 pb-20">
-        {/* Header del Servizio */}
-        <div className="bg-gradient-to-r from-red-900 to-red-950 text-white py-24 relative overflow-hidden">
-          {/* Pattern decorativo */}
-          <div className="absolute inset-0 opacity-10">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                  <path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
-            </svg>
+      <div className="pt-24 pb-20">
+        {/* Header con sfondo gradiente */}
+        <div className="bg-gradient-to-r from-red-900 to-red-600 py-16 mb-12 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            <div className="absolute right-0 bottom-0 transform translate-x-1/4 translate-y-1/4">
+              <svg width="404" height="404" fill="none" viewBox="0 0 404 404">
+                <defs>
+                  <pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" fill="white" />
+                  </pattern>
+                </defs>
+                <rect width="404" height="404" fill="url(#pattern)" />
+              </svg>
+            </div>
+            <div className="absolute left-0 top-0 transform -translate-x-1/4 -translate-y-1/4 rotate-45">
+              <svg width="404" height="404" fill="none" viewBox="0 0 404 404">
+                <defs>
+                  <pattern id="pattern2" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <rect x="0" y="0" width="4" height="4" fill="white" />
+                  </pattern>
+                </defs>
+                <rect width="404" height="404" fill="url(#pattern2)" />
+              </svg>
+            </div>
           </div>
-          
           <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col items-center text-center">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                className="w-24 h-24 rounded-full bg-white text-red-600 flex items-center justify-center mb-6 shadow-xl"
-              >
-                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={service.icon} />
-                </svg>
-              </motion.div>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-4xl md:text-6xl font-bold mb-4 text-shadow"
-              >
-                {service.title}
-              </motion.h1>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="w-24 h-1 bg-white mb-6"
-              />
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-xl md:text-2xl max-w-3xl"
-              >
-                {service.description}
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="mt-8"
-              >
-                <a href="#contact-form" className="bg-white text-red-600 hover:bg-gray-100 py-3 px-8 rounded-full font-medium transition-colors duration-300 shadow-lg inline-block">
-                  Richiedi subito questo servizio
-                </a>
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Forme decorative */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-red-800 opacity-50"
-          />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-red-800 opacity-30"
-          />
-        </div>
-        
-        {/* Descrizione Dettagliata */}
-        <div className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="md:col-span-2 order-2 md:order-1"
-              >
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center">
-                  <span className="bg-red-600 w-2 h-12 mr-4 rounded-full hidden md:block"></span>
-                  In cosa consiste il nostro servizio
-                </h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                  {service.longDescription}
-                </p>
-                
-                <div className="bg-gray-50 p-6 rounded-xl border-l-4 border-red-600 shadow-sm mb-10">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                    <svg className="w-6 h-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                    Perché scegliere il nostro servizio?
-                  </h3>
-                  <ul className="space-y-4">
-                    {service.benefits.map((benefit, index) => (
-                      <motion.li
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="flex items-start"
-                      >
-                        <div className="bg-red-600 rounded-full p-1 text-white mr-3 flex-shrink-0 mt-1">
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                        <span className="text-gray-700">{benefit}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="flex flex-wrap gap-4 mb-6">
-                  <Link to="/servizi">
-                    <motion.button
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex items-center text-red-600 hover:text-red-700"
-                    >
-                      <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                      </svg>
-                      Torna ai servizi
-                    </motion.button>
-                  </Link>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="order-1 md:order-2"
-              >
-                <div className="sticky top-24 bg-white rounded-xl shadow-xl overflow-hidden">
-                  <div className="bg-red-950 p-4 text-white">
-                    <h3 className="text-lg font-bold">Servizi correlati</h3>
-                  </div>
-                  <div className="p-4 space-y-2">
-                    {['strategia-digitale', 'branding-identita', 'social-media-marketing', 'sviluppo-web', 'seo-sem', 'content-marketing']
-                      .filter(id => id !== service.id)
-                      .slice(0, 3)
-                      .map(id => {
-                        const relatedService = [
-                          { id: 'strategia-digitale', title: 'Strategia Digitale' },
-                          { id: 'branding-identita', title: 'Branding & Identità' },
-                          { id: 'social-media-marketing', title: 'Social Media Marketing' },
-                          { id: 'sviluppo-web', title: 'Sviluppo Web' },
-                          { id: 'seo-sem', title: 'SEO & SEM' },
-                          { id: 'content-marketing', title: 'Content Marketing' }
-                        ].find(s => s.id === id);
-                        
-                        return (
-                          <Link key={id} to={`/servizi/${id}`}>
-                            <div className="border border-gray-200 rounded p-3 hover:bg-gray-50 transition-colors">
-                              <p className="font-medium text-gray-800">{relatedService.title}</p>
-                            </div>
-                          </Link>
-                        );
-                      })
-                    }
-                  </div>
-                  <div className="bg-gray-50 p-4">
-                    <a
-                      href="#contact-form"
-                      className="block w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-lg font-medium transition-colors duration-300 text-center"
-                    >
-                      Contattaci
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-          
-          {/* Form di contatto */}
-          <div id="contact-form" className="max-w-4xl mx-auto mt-16 pt-8 scroll-mt-24">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative bg-white rounded-xl p-8 md:p-10 shadow-xl"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
-              {/* Elemento decorativo */}
-              <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-600 to-red-800 rounded-t-xl"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Interessato a questo servizio?</h2>
-                <p className="text-lg text-gray-700">
-                  Compila il modulo sottostante e ti contatteremo per discutere di come possiamo aiutarti con il nostro servizio di <span className="font-semibold text-red-600">{service.title}</span>.
-                </p>
-              </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-                      Nome e cognome <span className="text-red-600">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all"
-                      placeholder="Il tuo nome"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                      Email <span className="text-red-600">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all"
-                      placeholder="La tua email"
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                      Telefono
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all"
-                      placeholder="Il tuo numero di telefono"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="company" className="block text-gray-700 font-medium mb-2">
-                      Azienda
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all"
-                      placeholder="La tua azienda"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
-                    Messaggio <span className="text-red-600">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:border-transparent resize-none transition-all"
-                    placeholder={`Descrivi come possiamo aiutarti con il servizio di ${service.title}...`}
-                  ></textarea>
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <div className="flex items-center">
-                    <input
-                      id="privacy"
-                      name="privacy"
-                      type="checkbox"
-                      required
-                      className="h-5 w-5 text-red-600 focus:ring-red-500 border-gray-300 rounded transition-all"
-                    />
-                    <label htmlFor="privacy" className="ml-3 text-gray-700">
-                      Acconsento al trattamento dei dati personali secondo la{' '}
-                      <Link to="/privacy-policy" className="text-red-600 hover:underline font-medium">
-                        Privacy Policy
-                      </Link>
-                      <span className="text-red-600">*</span>
-                    </label>
-                  </div>
-                </div>
-                
-                <motion.button
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.99 }}
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white py-4 px-6 rounded-lg font-medium transition-colors duration-300 shadow-md flex items-center justify-center"
-                >
-                  <span className="mr-2">Richiedi informazioni</span>
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </motion.button>
-              </form>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-3">{serviceData.title}</h1>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto">{serviceData.subtitle}</p>
             </motion.div>
           </div>
+        </div>
+
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <p className="text-lg text-gray-600 mb-8">{serviceData.description}</p>
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Benefici</h3>
+                <ul className="space-y-2">
+                  {serviceData.benefits.map((benefit, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg className="w-5 h-5 text-red-600 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-gray-700">{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative h-96 rounded-lg overflow-hidden shadow-xl"
+            >
+              <img
+                src={serviceData.image}
+                alt={serviceData.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-16"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
+              I nostri servizi di {serviceData.title}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {serviceData.subservices.map((subservice, index) => (
+                <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition-shadow duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{subservice.name}</h3>
+                  <p className="text-gray-600">{subservice.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Sezione contatto */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="bg-gray-50 rounded-xl p-8 md:p-12"
+          >
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Parliamo del tuo progetto</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Sei interessato ai nostri servizi di {serviceData.title.toLowerCase()}? Compila il modulo sottostante e ti contatteremo al più presto.
+              </p>
+            </div>
+
+            <form className="max-w-3xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+                    Nome e Cognome *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 transition"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 transition"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <label htmlFor="subject" className="block text-gray-700 font-medium mb-2">
+                  Oggetto *
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 transition"
+                  defaultValue={`Informazioni sui servizi di ${serviceData.title}`}
+                  required
+                />
+              </div>
+
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+                  Messaggio *
+                </label>
+                <textarea
+                  id="message"
+                  rows="5"
+                  className="w-full border-gray-300 rounded-lg shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 transition"
+                  required
+                ></textarea>
+              </div>
+
+              <div className="mb-6">
+                <div className="flex items-center">
+                  <input
+                    id="privacy"
+                    type="checkbox"
+                    className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    required
+                  />
+                  <label htmlFor="privacy" className="ml-2 block text-sm text-gray-700">
+                    Acconsento al trattamento dei miei dati personali secondo la{' '}
+                    <Link to="/privacy" className="text-red-600 hover:text-red-800">
+                      Privacy Policy
+                    </Link>
+                  </label>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  type="submit"
+                  className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
+                >
+                  Invia Richiesta
+                </motion.button>
+              </div>
+            </form>
+          </motion.div>
         </div>
       </div>
     </>

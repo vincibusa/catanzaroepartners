@@ -40,7 +40,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl mb-10 text-gray-200"
           >
-            Siamo un'agenzia di marketing che unisce creatività e strategia per far crescere il tuo business nel mondo digitale.
+           Sviluppiamo i tuoi progetti con creatività e innovazione per far crescere il tuo business.
           </motion.p>
           
           <motion.div

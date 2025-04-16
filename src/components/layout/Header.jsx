@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/images/logo.png';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,6 +55,15 @@ const Header = () => {
       )
     },
     { 
+      name: 'Comfort Zone', 
+      id: 'comfort-zone',
+      icon: (
+        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      )
+    },
+    { 
       name: 'Portfolio', 
       id: 'portfolio',
       icon: (
@@ -92,9 +102,12 @@ const Header = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-xl sm:text-2xl font-bold text-gray-800 truncate"
           >
-            Catanzaro
+            <img 
+              src={logo} 
+              alt="Catanzaro & Partners" 
+              className="h-12 md:h-14"
+            />
           </motion.div>
         </Link>
 

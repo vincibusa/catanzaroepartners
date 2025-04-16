@@ -54,7 +54,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
-            Chi Siamo
+            Amiamo Progetti Ambiziosi
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -70,7 +70,7 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto"
           >
-            Siamo un team di professionisti appassionati e creativi pronti a trasformare la tua presenza digitale.
+            La Pubblicità può durare solo un attimo, ma con strategia e tattica può durare molto di più.
           </motion.p>
         </div>
 
@@ -81,21 +81,23 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">La Nostra Storia</h3>
-            <p className="text-gray-600 mb-6">
-              Catanzaro & Partners nasce nel 2015 dalla visione di un gruppo di professionisti che credevano in un approccio diverso al marketing. Abbiamo iniziato come una piccola agenzia specializzata in strategie digitali, e in pochi anni siamo cresciuti fino a diventare un punto di riferimento nel settore.
+            <p className="text-gray-600 mb-2">
+              Da anni ci occupiamo di produzione e progettazione di eventi enogastronomici e culturali, generando valore aggiunto per i territorio.
             </p>
-            <p className="text-gray-600 mb-6">
-              La nostra missione è semplice ma ambiziosa: aiutare le aziende a crescere attraverso strategie di marketing innovative e misurabili. Crediamo fermamente che ogni brand abbia una storia unica da raccontare, e noi siamo qui per aiutarti a farla emergere e a trasformarla in risultati concreti.
+            <p className="text-gray-600 mb-2">
+              Ideiamo campagne di comunicazione per istituzioni e imprese, forniamo consulenze per PMI e sosteniamo le imprese in progetti d'internazionalizzazione.
             </p>
-            <div className="flex space-x-2">
-              <span className="text-red-600 font-medium">15+</span>
+            <p className="text-gray-600 mb-2">
+              I nostri punti di forza sono la comunicazione istituzionale e d'impresa attraverso lo sviluppo di un planing integrato tra web marketing e event project.
+            </p>
+            <div className="flex flex-wrap space-x-2">
+              <span className="text-red-600 font-medium">12</span>
               <span className="text-gray-600">Anni di esperienza</span>
               <span className="mx-2 text-gray-400">|</span>
               <span className="text-red-600 font-medium">300+</span>
               <span className="text-gray-600">Clienti soddisfatti</span>
               <span className="mx-2 text-gray-400">|</span>
-              <span className="text-red-600 font-medium">25+</span>
+              <span className="text-red-600 font-medium">10+</span>
               <span className="text-gray-600">Team di esperti</span>
             </div>
           </motion.div>
@@ -107,11 +109,10 @@ const AboutSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative h-96"
           >
-            <div className="absolute top-0 right-0 w-4/5 h-4/5 bg-red-600 rounded-lg"></div>
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
               alt="Team di Catanzaro & Partners"
-              className="absolute bottom-0 left-0 w-4/5 h-4/5 object-cover rounded-lg shadow-xl z-10"
+              className="w-full h-full object-cover rounded-lg shadow-xl"
             />
           </motion.div>
         </div>

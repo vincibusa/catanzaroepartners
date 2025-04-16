@@ -104,7 +104,7 @@ const TestimonialsSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto"
           >
-            Scopri le opinioni di chi ha collaborato con noi e i risultati che abbiamo ottenuto insieme.
+          Scopri le opinioni di chi ha collaborato con noi e i risultati che abbiamo ottenuto insieme
           </motion.p>
         </div>
 

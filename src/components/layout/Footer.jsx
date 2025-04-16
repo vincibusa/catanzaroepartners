@@ -1,8 +1,26 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import logo from '../../assets/images/logo.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  // Funzione per scrollare a una sezione specifica dalla home
+  const scrollToSection = (sectionId) => {
+    // Controlliamo se siamo nella home page
+    if (window.location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+    
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <footer className="bg-red-950 text-white pt-12 pb-8">
@@ -10,7 +28,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Colonna 1 - Informazioni sull'agenzia */}
           <div>
-            <h3 className="text-xl font-bold mb-4">Catanzaro & Partners</h3>
+            <div className="mb-4">
+              <img 
+                src={logo} 
+                alt="Catanzaro & Partners" 
+                className="h-16 mb-4"
+              />
+            </div>
             <p className="text-gray-300 mb-4">
               Agenzia di marketing innovativa specializzata in strategie digitali 
               per aiutare le aziende a crescere nel mercato competitivo di oggi.
@@ -41,17 +65,64 @@ const Footer = () => {
           {/* Colonna 2 - Link Utili */}
           <div>
             <h3 className="text-xl font-bold mb-4">Link Utili</h3>
+            <div className="w-12 h-1 bg-red-500 mb-4"></div>
             <ul className="space-y-2">
-              {['Home', 'Chi Siamo', 'Servizi', 'Portfolio', 'Blog', 'Contatti'].map((item) => (
-                <li key={item}>
-                  <Link
-                    to={`/${item.toLowerCase().replace(' ', '-')}`}
-                    className="text-gray-300 hover:text-red-400 transition-colors duration-300"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <button
+                  onClick={() => scrollToSection('hero')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('chi-siamo')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Chi Siamo
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('servizi')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Servizi
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('comfort-zone')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Comfort Zone
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('portfolio')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Portfolio
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('team')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Team
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection('contatti')}
+                  className="text-gray-300 hover:text-red-400 transition-colors duration-300"
+                >
+                  Contatti
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -61,19 +132,19 @@ const Footer = () => {
             <div className="w-12 h-1 bg-red-500 mb-4"></div>
             <ul className="space-y-2">
               {[
-                'Strategia Digitale',
-                'Branding & Identità',
-                'Social Media Marketing',
-                'Sviluppo Web',
-                'SEO & SEM',
-                'Content Marketing'
+                { name: 'Branding', path: '/servizi/branding' },
+                { name: 'Event', path: '/servizi/event' },
+                { name: 'Marketing', path: '/servizi/marketing' },
+                { name: 'Web e Multimedia', path: '/servizi/web-multimedia' },
+                { name: 'Food Concept', path: '/#comfort-zone' },
+                { name: 'Talent Partner', path: '/#comfort-zone' }
               ].map((service) => (
-                <li key={service}>
+                <li key={service.name}>
                   <Link
-                    to="/servizi"
+                    to={service.path}
                     className="text-gray-300 hover:text-red-400 transition-colors duration-300"
                   >
-                    {service}
+                    {service.name}
                   </Link>
                 </li>
               ))}
