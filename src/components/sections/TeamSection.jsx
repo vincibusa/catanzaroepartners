@@ -38,15 +38,15 @@ const TeamSection = () => {
   ];
 
   return (
-    <section id="team" className="py-20 bg-gray-50">
+    <section id="team" className="py-24 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-800 mb-5"
           >
             Il Nostro Team
           </motion.h2>
@@ -55,41 +55,46 @@ const TeamSection = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-20 h-1 bg-red-600 mx-auto mb-6"
+            className="w-24 h-1 bg-gradient-to-r from-red-500 to-red-700 mx-auto mb-8 rounded-full"
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-gray-600 max-w-3xl mx-auto"
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-light"
           >
             Conosciamo i professionisti che con passione e competenza lavorano ogni giorno per far crescere il tuo business.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-[280px]"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{
+                y: -10,
+                transition: { duration: 0.3 }
+              }}
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-lg h-[320px] transform transition-all duration-300"
             >
-              <div className="relative w-full h-[200px]">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="relative w-full h-full">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3">
+                <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
+                  <div className="transform transition-transform duration-300 translate-y-4 group-hover:translate-y-0">
+                    <h3 className="text-lg font-bold text-white mb-1">{member.name}</h3>
+                    <p className="text-red-300 font-medium text-sm">{member.role}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="p-4 flex-grow flex flex-col justify-center">
-                <h3 className="text-base font-bold text-gray-900 mb-1 truncate">{member.name}</h3>
-                <p className="text-red-600 text-sm font-medium truncate">{member.role}</p>
               </div>
             </motion.div>
           ))}
@@ -100,16 +105,16 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-16"
         >
-          <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-sm md:text-base">
+          <p className="text-gray-600 max-w-2xl mx-auto mb-8 text-base md:text-lg">
             Sei interessato a unirti al nostro team di esperti appassionati? 
             Siamo sempre alla ricerca di talenti che condividono la nostra visione.
           </p>
           <motion.button
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.05, boxShadow: "0 10px 25px -5px rgba(220, 38, 38, 0.3)" }}
             whileTap={{ scale: 0.97 }}
-            className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-sm font-medium transition-colors duration-300"
+            className="bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-8 rounded-full text-base font-medium transition-all duration-300 shadow-md"
             onClick={() => {
               const contactSection = document.getElementById('contatti');
               if (contactSection) {
