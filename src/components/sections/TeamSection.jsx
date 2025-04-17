@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import adalberto from '../../assets/images/adalberto.jpeg';
 import jessica from '../../assets/images/jessica.jpeg';
 import salvo from '../../assets/images/salvo.jpeg';
+
 const TeamSection = () => {
   const teamMembers = [
     {
@@ -13,7 +14,7 @@ const TeamSection = () => {
     {
       id: 2,
       name: 'Jessica Ricci',
-      role: ' Senior Partner e Lawyer',
+      role: 'Senior Partner e Lawyer',
       image: jessica,
     },
     {
@@ -67,32 +68,28 @@ const TeamSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-lg overflow-hidden shadow-md"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-[280px]"
             >
-              <div className="relative group">
+              <div className="relative w-full h-[200px]">
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-80 object-cover object-center"
+                  className="w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6">
-                    {/* Social media section removed */}
-                  </div>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent h-1/3">
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                <p className="text-red-600 font-medium mb-4">{member.role}</p>
-                {/* Description section removed */}
+              <div className="p-4 flex-grow flex flex-col justify-center">
+                <h3 className="text-base font-bold text-gray-900 mb-1 truncate">{member.name}</h3>
+                <p className="text-red-600 text-sm font-medium truncate">{member.role}</p>
               </div>
             </motion.div>
           ))}
@@ -103,16 +100,16 @@ const TeamSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
-          <p className="text-gray-600 max-w-2xl mx-auto mb-8">
+          <p className="text-gray-600 max-w-2xl mx-auto mb-6 text-sm md:text-base">
             Sei interessato a unirti al nostro team di esperti appassionati? 
             Siamo sempre alla ricerca di talenti che condividono la nostra visione.
           </p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-full text-sm font-medium transition-colors duration-300"
             onClick={() => {
               const contactSection = document.getElementById('contatti');
               if (contactSection) {

@@ -1,80 +1,154 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+// Importo le immagini dei partner
+import potenzano from '../../assets/partner/potenzano-1024x683.jpg';
+import sergioRusso from '../../assets/partner/sergio russo.jpg';
+import tonyLoCoco from '../../assets/partner/tony-lo coco.jpeg';
+import trapaniMartinez from '../../assets/partner/Trapani-Panificio-Martinez-2.jpg';
+import arena from '../../assets/partner/arena.jpg';
+import garganoPizza from '../../assets/partner/gargano pizza.jpg';
+import chifari from '../../assets/partner/pierangelo_chifari_sigep2019_07_web.jpg';
+import salvoTerruso from '../../assets/partner/Salvo terruso.webp';
+import seby from '../../assets/partner/Seby-e1738258141375.png.webp';
+import fiasconaro from '../../assets/partner/Nicola-Fiasconaro-kYgC-U33009306723223zE-656x492@Corriere-Web-Sezioni.jpg';
+import ninoFerreri from '../../assets/partner/Nino Ferreri.jpg';
+import lucianoMarco from '../../assets/partner/Luciano-Di-Marco.jpeg';
+import danieleVaccarella from '../../assets/partner/Daniele-Vaccarella.jpg.webp';
+import giusiBattaglia from '../../assets/partner/Giusi_Battaglia.jpeg';
+import cappello from '../../assets/partner/Cappellop-800x800.jpeg';
+import andyLuotto from '../../assets/partner/Andy Luotto.jpeg';
+
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const projects = [
+  const partners = [
     {
       id: 1,
-      title: 'Rebrand di Lusso',
-      category: 'branding',
-      image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Restyling completo dell\'identità di marca per un brand di gioielli di lusso.',
+      name: 'Tony Lo Coco',
+      category: 'chef',
+      image: tonyLoCoco,
+      description: 'Chef stellato, ristorante "I Pupi"',
     },
     {
       id: 2,
-      title: 'E-commerce Fashion',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Sviluppo di una piattaforma e-commerce per un brand di moda emergente.',
+      name: 'Pierangelo Chifari',
+      category: 'bakery',
+      image: chifari,
+      description: 'Maestro panificatore, Panificio Chifari',
     },
     {
       id: 3,
-      title: 'Campagna Social Food',
-      category: 'social',
-      image: 'https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Strategia social media per un ristorante di alta cucina con risultati eccezionali.',
+      name: 'Nicola Fiasconaro',
+      category: 'pasticceria',
+      image: fiasconaro,
+      description: 'Maestro pasticcere, Fiasconaro',
     },
     {
       id: 4,
-      title: 'SEO per E-learning',
-      category: 'digital',
-      image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Ottimizzazione SEO per una piattaforma di corsi online con incremento del 200% del traffico organico.',
+      name: 'Sergio Russo',
+      category: 'chef',
+      image: sergioRusso,
+      description: 'Chef rinomato ed esperto di cucina siciliana',
     },
     {
       id: 5,
-      title: 'Campagna AdWords B2B',
-      category: 'digital',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Gestione campagne Google Ads per azienda B2B con ROI del 450%.',
+      name: 'Nino Ferreri',
+      category: 'chef',
+      image: ninoFerreri,
+      description: 'Chef stellato, ristorante "Limu"',
     },
     {
       id: 6,
-      title: 'App Mobile Fitness',
-      category: 'web',
-      image: 'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80',
-      description: 'Sviluppo di app mobile per un brand nel settore fitness con più di 100.000 download.',
+      name: 'Panificio Martinez',
+      category: 'bakery',
+      image: trapaniMartinez,
+      description: 'Storico panificio trapanese',
     },
     {
       id: 7,
-      title: 'Visual Identity Startup',
-      category: 'branding',
-      image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      description: 'Creazione dell\'identità visiva completa per una startup innovativa nel settore tech.',
+      name: 'Salvo Terruso',
+      category: 'chef',
+      image: salvoTerruso,
+      description: 'Chef e consulente gastronomico',
     },
     {
       id: 8,
-      title: 'Content Strategy Travel',
-      category: 'content',
-      image: 'https://images.unsplash.com/photo-1576153192396-180ecef2a715?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
-      description: 'Strategia di content marketing per un tour operator specializzato in viaggi di lusso.',
+      name: 'Potenzano',
+      category: 'pasticceria',
+      image: potenzano,
+      description: 'Maestro pasticcere, specialità siciliane',
+    },
+    {
+      id: 9,
+      name: 'Arena',
+      category: 'food',
+      image: arena,
+      description: 'Azienda specializzata in prodotti tipici siciliani',
+    },
+    {
+      id: 10,
+      name: 'Gargano Pizza',
+      category: 'pizzeria',
+      image: garganoPizza,
+      description: 'Maestro pizzaiolo, innovazione nella tradizione',
+    },
+    {
+      id: 11,
+      name: 'Sebastiano Tringali',
+      category: 'chef',
+      image: seby,
+      description: 'Chef e consulente gastronomico',
+    },
+    {
+      id: 12,
+      name: 'Luciano Di Marco',
+      category: 'bakery',
+      image: lucianoMarco,
+      description: 'Maestro panificatore e ricercatore',
+    },
+    {
+      id: 13,
+      name: 'Daniele Vaccarella',
+      category: 'chef',
+      image: danieleVaccarella,
+      description: 'Chef creativo e innovatore',
+    },
+    {
+      id: 14,
+      name: 'Giusi Battaglia',
+      category: 'food',
+      image: giusiBattaglia,
+      description: 'Esperta di cucina siciliana e conduttrice TV',
+    },
+    {
+      id: 15,
+      name: 'Cappello',
+      category: 'chef',
+      image: cappello,
+      description: 'Chef stellato, cucina d\'autore',
+    },
+    {
+      id: 16,
+      name: 'Andy Luotto',
+      category: 'chef',
+      image: andyLuotto,
+      description: 'Chef, attore e personaggio televisivo',
     },
   ];
 
   const filters = [
     { id: 'all', label: 'Tutti' },
-    { id: 'branding', label: 'Branding' },
-    { id: 'web', label: 'Sviluppo Web' },
-    { id: 'digital', label: 'Marketing Digitale' },
-    { id: 'social', label: 'Social Media' },
-    { id: 'content', label: 'Content' },
+    { id: 'chef', label: 'Chef' },
+    { id: 'bakery', label: 'Panificazione' },
+    { id: 'pasticceria', label: 'Pasticceria' },
+    { id: 'pizzeria', label: 'Pizzeria' },
+    { id: 'food', label: 'Food' },
   ];
 
-  const filteredProjects = activeFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeFilter);
+  const filteredPartners = activeFilter === 'all'
+    ? partners
+    : partners.filter(partner => partner.category === activeFilter);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -98,7 +172,7 @@ const PortfolioSection = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-gray-50">
+    <section id="talent-partner" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <motion.h2
@@ -108,7 +182,7 @@ const PortfolioSection = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
-            I Nostri Progetti
+            I Nostri Talent Partner
           </motion.h2>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -124,7 +198,7 @@ const PortfolioSection = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg text-gray-600 max-w-3xl mx-auto"
           >
-            Esplora alcuni dei nostri progetti di successo e scopri come abbiamo aiutato i nostri clienti a raggiungere i loro obiettivi.
+            Creiamo momenti di intrattenimento innovativi e coinvolgenti grazie alla collaborazione con i migliori talenti del panorama enogastronomico siciliano. La nostra esperienza ci permette di proporre format unici nel loro genere.
           </motion.p>
         </div>
 
@@ -147,7 +221,7 @@ const PortfolioSection = () => {
           ))}
         </div>
 
-        {/* Progetti */}
+        {/* Partner */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -155,25 +229,29 @@ const PortfolioSection = () => {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {filteredProjects.map((project) => (
+          {filteredPartners.map((partner) => (
             <motion.div
-              key={project.id}
+              key={partner.id}
               variants={itemVariants}
-              className="group relative overflow-hidden rounded-lg cursor-pointer"
+              className="group relative overflow-hidden rounded-lg shadow-md bg-white"
             >
               <div className="aspect-w-4 aspect-h-3 w-full h-64">
                 <img
-                  src={project.image}
-                  alt={project.title}
+                  src={partner.image}
+                  alt={partner.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <h3 className="text-white text-lg font-bold mb-1">{project.title}</h3>
-                <p className="text-gray-300 text-sm mb-2">{project.description}</p>
+                <h3 className="text-white text-lg font-bold mb-1">{partner.name}</h3>
+                <p className="text-gray-300 text-sm mb-2">{partner.description}</p>
                 <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs rounded-full uppercase">
-                  {filters.find(f => f.id === project.category).label}
+                  {filters.find(f => f.id === partner.category).label}
                 </span>
+              </div>
+              <div className="p-4">
+                <h3 className="text-gray-900 font-bold">{partner.name}</h3>
+                <p className="text-gray-600 text-sm">{partner.description}</p>
               </div>
             </motion.div>
           ))}
@@ -185,7 +263,7 @@ const PortfolioSection = () => {
             whileTap={{ scale: 0.95 }}
             className="bg-red-600 hover:bg-red-700 text-white py-3 px-8 rounded-full font-medium transition-colors duration-300"
           >
-            Vedi tutti i progetti
+            Collabora con noi
           </motion.button>
         </div>
       </div>

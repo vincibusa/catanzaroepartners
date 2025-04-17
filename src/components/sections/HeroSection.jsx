@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import backgroundVideo from '../../assets/cannoloVideo.mp4';
+import backgroundVideo from '../../assets/videoBackopt.mp4';
 
 const HeroSection = () => {
   return (
